@@ -17,7 +17,7 @@ export default function CharacterRedactor() {
     const [intelligence, setIntelligence] = useState(10);
     const [faith, setFaith] = useState(10);
 
-    const hpValues = [
+    const hpValues = [ // - массив для хранения показателей здоровья на разных уровнях прокачки этого стата
         400,  // уровень 1
         415,  // уровень 2
         433,  // уровень 3
@@ -119,6 +119,27 @@ export default function CharacterRedactor() {
         1900  // уровень 99
     ];
 
+    const enduranceValues = [
+        81, 82, 83, 84, 85, 86, 87, 88, 90, 91,
+        93, 95, 97, 98, 100, 102, 104, 106, 108, 110,
+        112, 115, 117, 119, 121, 124, 126, 129, 131, 133,
+        136, 139, 141, 144, 146, 149, 152, 154, 157, 160,
+        160, 160, 160, 160, 160, 160, 160, 160, 160, 160
+    ];  //
+
+    const EquipLoadValues = [ 41.0, 42.0, 43.0, 44.0, 45.0, 46.0, 47.0, 48.0, 49.0, 50.0,
+        51.0, 52.0, 53.0, 54.0, 55.0, 56.0, 57.0, 58.0, 59.0, 60.0,
+        61.0, 62.0, 63.0, 64.0, 65.0, 66.0, 67.0, 68.0, 69.0, 70.0,
+        71.0, 72.0, 73.0, 74.0, 75.0, 76.0, 77.0, 78.0, 79.0, 80.0,
+        81.0, 82.0, 83.0, 84.0, 85.0, 86.0, 87.0, 88.0, 89.0, 90.0,
+        91.0, 92.0, 93.0, 94.0, 95.0, 96.0, 97.0, 98.0, 99.0, 100.0,
+        101.0, 102.0, 103.0, 104.0, 105.0, 106.0, 107.0, 108.0, 109.0, 110.0,
+        111.0, 112.0, 113.0, 114.0, 115.0, 116.0, 117.0, 118.0, 119.0, 120.0,
+        121.0, 122.0, 123.0, 124.0, 125.0, 126.0, 127.0, 128.0, 129.0, 130.0,
+        131.0, 132.0, 133.0, 134.0, 135.0, 136.0, 137.0, 138.0, 139.0, 140.0,
+        141.0, 142.0, 143.0, 144.0, 145.0, 146.0, 147.0, 148.0, 149.0, 150.0
+    ];
+
     const levelMain = [
         {href: "https://darksouls.wiki.fextralife.com/file/Dark-Souls/icon_level.png", signature: "level", num: level}
     ]
@@ -144,7 +165,9 @@ export default function CharacterRedactor() {
         setLevel(level - 1);
     };
 
-    let HP = hpValues[statsArray[0].num]
+    let HP = hpValues[statsArray[0].num] // хп
+    let stamina = enduranceValues[statsArray[2].num] // стамина
+    const equipLoad = EquipLoadValues[statsArray[2].num] // грузоподьёмность
 
     return (
         <>
@@ -164,8 +187,10 @@ export default function CharacterRedactor() {
                         {statsArray.map((stat) => (
                             <div className="stats" key={stat.signature}>
                                 <img src={stat.href} alt={stat.signature}/>
-                                <button onClick={() => handleIncrease(stat.plus)}><FontAwesomeIcon icon={faPlus}/></button>
-                                <button onClick={() => handleDecrease(stat.plus)}><FontAwesomeIcon icon={faMinus}/></button>
+                                <button onClick={() => handleIncrease(stat.plus)}><FontAwesomeIcon icon={faPlus}/>
+                                </button>
+                                <button onClick={() => handleDecrease(stat.plus)}><FontAwesomeIcon icon={faMinus}/>
+                                </button>
                                 <span>{stat.signature}</span>
                                 <p>{stat.num}</p>
                             </div>
@@ -173,7 +198,14 @@ export default function CharacterRedactor() {
                         <div className="stats">
                             <img src="https://darksouls.wiki.fextralife.com/file/Dark-Souls-3/icon_hp.png"/>
                             <span>HP - {HP}</span>
-                            <span></span>
+                        </div>
+                        <div className="stats">
+                            <img src="https://darksouls.wiki.fextralife.com/file/Dark-Souls-3/icon_stamina.png"/>
+                            <span>Stamina - {stamina}</span>
+                        </div>
+                        <div className="stats">
+                            <img src="https://darksouls.wiki.fextralife.com/file/Dark-Souls-3/icon_equip_load.png"/>
+                            <span>Equip Load - {equipLoad}</span>
                         </div>
                     </div>
                 </div>
