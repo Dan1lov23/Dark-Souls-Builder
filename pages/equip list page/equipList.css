@@ -1,0 +1,27 @@
+.equipListContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 162px);
+    justify-content: center;
+    align-items: center;
+    a {
+        text-decoration: none;
+        color: yellow;
+    }
+    a:hover {
+        color: Gold;
+    }
+}
+
+.weaponMain {
+    text-align: center;
+}
+
+.weaponMain span {
+    display: block;
+    margin-top: 20px;
+}
+
+.weaponTypeNameTitle {
+    text-align: center;
+    margin: 50px;
+}
