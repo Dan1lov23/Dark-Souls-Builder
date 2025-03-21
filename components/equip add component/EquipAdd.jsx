@@ -1,62 +1,18 @@
-import './ecuipAdd.css';
+import './equipAdd.css';
 
-export default function equipAdd() {
+export default function EquipAdd({ userItem, removeItem }) {
     return (
-        <>
-            <div className="equipAddMain">
-                <div className="equipAddContainer">
-                    <div className="equipAdd">
+        <div className="equipAddMain">
+            <div className="equipAddContainer">
+                {userItem.map((item, index) => (
+                    <div className="equipAdd" key={index}>
                         <button>
-                            <img src={"https://cdn-icons-png.flaticon.com/512/25/25333.png"}/>
+                            <img src={item.src} alt={item.name} />
                         </button>
+                        <button onClick={() => removeItem(index)}>Удалить</button>
                     </div>
-                    <div className="equipAdd">
-                        <button>
-                            <img src={"https://cdn-icons-png.flaticon.com/512/25/25333.png"}/>
-                        </button>
-                    </div>
-                    <div className="equipAdd">
-                        <button>
-                            <img src={"https://cdn-icons-png.flaticon.com/512/25/25333.png"}/>
-                        </button>
-                    </div>
-                    <div className="equipAdd">
-                        <button>
-                            <img src={"https://cdn-icons-png.flaticon.com/512/25/25333.png"}/>
-                        </button>
-                    </div>
-                    <div className="equipAdd">
-                        <button>
-                            <img src={"https://cdn-icons-png.flaticon.com/512/25/25333.png"}/>
-                        </button>
-                    </div>
-                    <div className="equipAdd">
-                        <button>
-                            <img src={"https://cdn-icons-png.flaticon.com/512/25/25333.png"}/>
-                        </button>
-                    </div>
-                    <div className="equipAdd">
-                        <button>
-                            <img src={"https://cdn-icons-png.flaticon.com/512/25/25333.png"}/>
-                        </button>
-                    </div>
-                    <div className="equipAdd">
-                        <button>
-                            <img src={"https://cdn-icons-png.flaticon.com/512/25/25333.png"}/>
-                        </button>
-                    </div>
-                    <div className="equipAdd">
-                        <button>
-                            <img src={"https://cdn-icons-png.flaticon.com/512/25/25333.png"}/>
-                        </button>
-                    </div>
-                    <div className="equipAdd">
-                        <button>
-                            <img src={"https://cdn-icons-png.flaticon.com/512/25/25333.png"}/>
-                        </button>
-                    </div>
-                </div>
+                ))}
             </div>
-        </>
-    )
+        </div>
+    );
 }

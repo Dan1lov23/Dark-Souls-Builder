@@ -8,12 +8,12 @@
 .equipAddContainer {
     display: grid;
     margin-top: 10px;
-    grid-template-columns: repeat(5, 62px);
+    grid-template-columns: repeat(5, 162px);
 }
 
 .equipAdd {
     img {
-        width: 50px;
-        height: 50px;
+        width: 150px;
+        height: 150px;
     }
 }
