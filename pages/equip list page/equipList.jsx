@@ -1,22 +1,31 @@
 import './equipList.css';
 
-export default function EquipList({ userItem, setUserItem }) {
+export default function EquipList({ userItem, setUserItem, requirementsItem, setRequirementsItem}) {
 
 
     function addItem(src, name) {
         if (userItem.length < 2) {
-            const newItem = { src, name };
+            // метод flatmap дя правильной реализации механизама поиска нужного предмеьта раздела weapon
+            const weapon = weaponsTypes.flatMap(type => type.weapons).find(weapon => weapon.name === name);
+            const newItem = { src, name, minStrength: weapon.minStrength, minDexterity: weapon.minDexterity, minIntelligence: weapon.minIntelligence, minFaith: weapon.minFaith};
+            const requirements = ["Требование силы - ", newItem.minStrength, "Требование ловкости -", newItem.minDexterity, "Требование интеллекта -", newItem.minIntelligence, "Требование веры -", newItem.minFaith]
+            console.log(requirements);
             setUserItem([...userItem, newItem]);
+            requirementsItem = requirements;
+            setRequirementsItem([...requirementsItem]);
         }
     }
-
 
     const weaponsTypes = [
         {
             // кинжалы и ножи (в оригинале дагеры)
             name: "Daggers",
             weapons: [
-                {src: "https://darksouls.wiki.fextralife.com/file/Dark-Souls/Wpn_Dagger.png", name: "Dagger"},
+                {
+                    src: "https://darksouls.wiki.fextralife.com/file/Dark-Souls/Wpn_Dagger.png", name: "Dagger",
+                    // требования
+                    minStrength: 5, minDexterity: 8, minIntelligence:  0, minFaith: 0,
+                },
                 {src: "https://darksouls.wiki.fextralife.com/file/Dark-Souls/Wpn_Ghost_Blade.png", name: "Ghost Blade"},
                 {src: "https://darksouls.wiki.fextralife.com/file/Dark-Souls/Wpn_Bandit's_Knife.png", name: "Bandit's Knife"},
                 {src: "https://darksouls.wiki.fextralife.com/file/Dark-Souls/Wpn_Parrying_Dagger.png", name: "Parrying Dagger"},
@@ -59,8 +68,6 @@ export default function EquipList({ userItem, setUserItem }) {
                 {src: "https://darksouls.wiki.fextralife.com/file/Dark-Souls/stone_greatsword.png", name: "stone greatsword"},
                 {src: "https://darksouls.wiki.fextralife.com/file/Dark-Souls/Abyss%20Greatsword.png", name: "Abyss Greatsword"},
                 {src: "https://darksouls.wiki.fextralife.com/file/Dark-Souls/Obsidian%20Greatsword.png", name: "Obsidian Greatsword"},
-
-
             ]
         }
     ];
