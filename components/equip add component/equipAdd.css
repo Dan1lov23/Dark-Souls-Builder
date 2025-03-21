@@ -8,7 +8,21 @@
 .equipAddContainer {
     display: grid;
     margin-top: 10px;
-    grid-template-columns: repeat(5, 162px);
+    grid-template-columns: repeat(5, 182px);
+    text-align: center;
+    .deleteButton {
+        margin-top: 20px;
+        width: 60px;
+        height: 40px;
+        background-color: crimson;
+        color: white;
+        border: darkred solid 1px;
+        border-radius: 15px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+    .deleteButton:hover {
+        transform: scale(1.1);
+    }
 }
 
 .equipAdd {
@@ -16,4 +30,8 @@
         width: 150px;
         height: 150px;
     }
+}
+
+h1 {
+    color: white;
 }

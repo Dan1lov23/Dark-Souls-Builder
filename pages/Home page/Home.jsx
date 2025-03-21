@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export default function Home() {
     const [userItem, setUserItem] = useState([]); // Инициализация состояния userItem как пустого массива
+    const [requirementsItem, setRequirementsItem] = useState([]);
 
     // Функция для удаления элемента
     const removeItem = (index) => {
@@ -13,12 +14,13 @@ export default function Home() {
 
     return (
         <>
-            <CharacterRedactor />
-            <EquipList userItem={userItem} setUserItem={setUserItem} />
+            <CharacterRedactor/>
             <EquipAdd userItem={userItem} removeItem={(index) => {
                 const newItems = userItem.filter((_, i) => i !== index);
                 setUserItem(newItems);
-            }} />
+            }}
+            requirementsItem={requirementsItem}/>
+            <EquipList userItem={userItem} setUserItem={setUserItem} requirementsItem={requirementsItem} setRequirementsItem={setRequirementsItem}/>
         </>
     );
 }
